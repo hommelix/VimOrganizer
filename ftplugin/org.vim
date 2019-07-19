@@ -546,10 +546,7 @@ function! OrgTodoSetup(todolist_str)
     let b:v.todoNotDoneMatch = '^\*\+\s*\zs\('.b:v.todoNotDoneMatch[:-2] . ')'
     let b:v.fulltodos = todolist
 
-    syntax clear DONETODO
-    exec 'syntax match DONETODO /' . b:v.todoDoneMatch[1:] . '/ containedin=OL1,OL2,OL3,OL4,OL5,OL6'
-    syntax clear NOTDONETODO
-    exec 'syntax match NOTDONETODO /' . b:v.todoNotDoneMatch[1:] . '/ containedin=OL1,OL2,OL3,OL4,OL5,OL6'
+    call org#syntax#TodoSyntax(b:v.todoDoneMatch[1:],b:v.todoNotDoneMatch[1:])
 
     call s:OrgCustomTodoHighlights()
     for item in keys( b:v.tododict )

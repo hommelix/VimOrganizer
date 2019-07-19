@@ -29,6 +29,7 @@ function! s:SynStars(perlevel)
 	exe 'syntax match OL8 +^\(*\)\{'.(1 + 7*a:perlevel).'}\s.*+ contains=stars'
 	exe 'syntax match OL9 +^\(*\)\{'.(1 + 8*a:perlevel).'}\s.*+ contains=stars'
 endfunction
+
 command! ChangeSyn  call <SID>SynStars(b:levelstars)
 
 
@@ -51,15 +52,18 @@ syntax region Org_Block start='\c^#+begin.*$' end='\c^#+end.*' keepend contains=
 syntax region Org_Src_Block start='\c^#+begin_src.*$' end='\c^#+end.*' keepend contains=Org_Config_Line
 
 if exists('b:v.todoDoneMatch[1:]')
-    exec "syntax match DONETODO '" . b:v.todoDoneMatch[1:] . "' containedin=OL1,OL2,OL3,OL4,OL5,OL6"
+    let s:donespec=b:v.todoDoneMatch[1:]
 else
-    syntax match DONETODO '\* \zsDONE' containedin=OL1,OL2,OL3,OL4,OL5,OL6
+    let s:donespec='\* \zsDONE'
 endif
 if exists('b:v.todoNotDoneMatch[1:]')
-    exec "syntax match NOTDONETODO '" . b:v.todoNotDoneMatch[1:] . "' containedin=OL1,OL2,OL3,OL4,OL5,OL6"
+    let s:notdonespec=b:v.todoNotDoneMatch[1:]
 else
-    syntax match NOTDONETODO '^\*\+ \zsTODO' containedin=OL1,OL2,OL3,OL4,OL5,OL6
+    let s:notdonespec='^\*\+ \zsTODO'
 endif
+
+call  org#syntax#TodoSyntax(s:donespec, s:notdonespec)
+
 syntax match OL1 +^\(*\)\{1}\s.*+ 
 syntax match OL2 +^\(*\)\{2}\s.*+ 
 syntax match OL3 +^\(*\)\{3}\s.*+ 
@@ -81,8 +85,12 @@ if has("conceal")
 	syn region Org_Half_Link concealends matchgroup=linkends start='\[\[' end=']]' contains=FullLink
 	syn region Org_Full_Link concealends matchgroup=linkends start='\[\[\(.\{-1,}\)]\[' end=']]'
 endif	
-"exec "syntax match DONETODO '" . b:v.todoDoneMatch . "' containedin=OL1,OL2,OL3,OL4,OL5,OL6" 
-"exec "syntax match NOTDONETODO '" . b:v.todoNotDoneMatch . "' containedin=OL1,OL2,OL3,OL4,OL5,OL6" 
+
+" highlighting
+" TODO maybe this should move within org#syntax#TodoSyntax ?
+hi! DONETODO guifg=green ctermfg=green
+"hi! NOTDONETODO guifg=red ctermfg=lightred
+hi! NOTDONETODO guifg=red ctermfg=red
 
 " ***********************************************
 " section below is example for having subregions
