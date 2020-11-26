@@ -3079,7 +3079,7 @@ function! s:ToFromAgenda()
     endif
 endfunction
 function! s:DoAgendaMaps()
-    execute "source " . s:sfile . '/vimorg-agenda-mappings.vim'
+    execute "source " . s:sfile . '/../vimorg-agenda-mappings.vim'
 
     command! -buffer -nargs=* Agenda :call OrgAgendaCommand(<f-args>)
 
