@@ -5067,7 +5067,7 @@ function! OrgDateInc(direction)
 endfunction
 
 function! s:GetClock()
-    return '['.strftime("%Y-%m-%d %a %H:%M").']'
+    return '['.strftime("%Y-%m-%d ").OrgWeekday().' '.OrgTime().']'
 endfunction 
 function! OrgClockIn(...)
     let save_cursor=getpos(".")
