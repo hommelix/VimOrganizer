@@ -5086,7 +5086,7 @@ function! OrgClockIn(...)
         if s:IsTagLine(line(".")+1)
             execute line('.')+1
         endif
-        call append(line('.'),'  :CLOCK: '.s:GetClock())
+        call append(line('.'),repeat(' ',s:Starcount(line('.'))+1).':CLOCK: '.s:GetClock())
         let dict={'file':expand("%"),'line':line('.'),'Timestamp':org#Timestamp()}
         call add(g:org_clock_history,dict)
     endif
