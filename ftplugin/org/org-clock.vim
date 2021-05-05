@@ -21,7 +21,7 @@ function OrgTime()
     endif
     if minutes > 59
         let hours = time[0]+1
-        minutes = minutes-60
+        let minutes = minutes-60
     else
         let hours = time[0]
     endif
