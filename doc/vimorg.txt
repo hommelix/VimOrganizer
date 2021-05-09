@@ -1109,6 +1109,26 @@ recorded in a :LOGBOOK: drawer like this:
 You can clock the same task multiple times and multiple :CLOCK: lines
 will accumulate in the logbook.
 
+g:org_clock_timestep    Clocking timestep      *vimorg-clock-timestep*
+
+A clocking timestep can be defined. When it is set, Clock in and Clock 
+out will be rounded to the timestep. For example add in your .vimrc
+
+let g:org_clock_timestep = 15
+
+Then clocking in at 10:07 will round the clock to 10:00. Clocking in at
+10:09 will round the clock at 10:15.
+
+it, ot                  Clock time mapping     *vimorg-clocktime-map*
+
+There are two mapping to edit the time on a :CLOCK: line. It helps to 
+change the time of a clock afterwards, using c. For example:
+
+:cit    delete the clock-in time and place the cursor where the time 
+        was.
+
+:cot    delete the clock-out time and place the cursor where the time
+        was.
 
 ========================================================================
 COLORS AND HIGHLIGHTING IN VIMORGANIZER        *vimorg-colors*
