@@ -5,6 +5,13 @@
 " Last Change: 2021 May 04
 "
 
+" org-mode clock mapping
+" ------------------------------------------------------------
+onoremap it :<c-u> normal! 0f]hv3b<cr>
+onoremap ot :<c-u> normal! 02f]hv3b<cr>
+
+" org-mode clock functions
+" ------------------------------------------------------------
 if exists('g:org_clock_timestep')
     let s:timestep = g:org_clock_timestep
 else
