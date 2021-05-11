@@ -2,7 +2,7 @@
 " ------------------------------------------------------------
 " Version: 0.01
 " Maintainer: Jerome Vandenabeele <hommelix+github@gmail.com>
-" Last Change: 2021 May 04
+" Last Change: 2021 May 11
 "
 
 " org-mode clock mapping
@@ -20,8 +20,8 @@ endif
 " Time() compute the actial time rounded to s:timestep
 function OrgTime()
     let time = split(strftime("%H:%M"),":")
-    let time[0] = time[0] / 1
-    let time[1] = time[1] / 1
+    let time[0] = str2nr(time[0])
+    let time[1] = str2nr(time[1])
     let delta = time[1] - (time[1]/s:timestep)*s:timestep
     if ((delta+0.0)/(s:timestep+0.0) < 0.5)
         let minutes = (time[1]/s:timestep)*s:timestep
