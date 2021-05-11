@@ -20,6 +20,8 @@ endif
 " Time() compute the actial time rounded to s:timestep
 function OrgTime()
     let time = split(strftime("%H:%M"),":")
+    let time[0] = time[0] / 1
+    let time[1] = time[1] / 1
     let delta = time[1] - (time[1]/s:timestep)*s:timestep
     if ((delta+0.0)/(s:timestep+0.0) < 0.5)
         let minutes = (time[1]/s:timestep)*s:timestep
