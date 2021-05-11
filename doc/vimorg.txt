@@ -1130,6 +1130,11 @@ change the time of a clock afterwards, using c. For example:
 :cot    delete the clock-out time and place the cursor where the time
         was.
 
+,ce    Clock evaluate                          *vimorg-clock-eval*
+
+Evaluate an updated clockline and update the result with the new time.
+Very usefull after updating a time using :cit or :cot.
+
 ========================================================================
 COLORS AND HIGHLIGHTING IN VIMORGANIZER        *vimorg-colors*
                                                *vimorg-colorschemes*

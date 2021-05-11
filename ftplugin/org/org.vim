@@ -5152,9 +5152,9 @@ function! OrgClockOut(...)
     call setpos(".",save_cursor)
 endfunction
 function! s:UpdateAllClocks()
-    %g/^\s*:CLOCK:/call s:AddClockTime(line("."))
+    %g/^\s*:CLOCK:/call AddClockTime(line("."))
 endfunction
-function! s:AddClockTime(line)
+function! AddClockTime(line)
     call setline(a:line,matchstr(getline(a:line),'.*\]') . ' -> ' . s:ClockTime(a:line))
 endfunction
 
