@@ -24,7 +24,7 @@ nnoremap <silent> <buffer> <tab> :call OrgCycle()<cr>
 nnoremap <silent> <buffer> <s-tab> :call OrgGlobalCycle()<cr>
 nnoremap <silent> <buffer> <localleader>ci :call OrgClockIn(line("."))<cr>
 nnoremap <silent> <buffer> <localleader>co :call OrgClockOut()<cr>
-nnoremap <silent> <buffer> <localleader>ce :call AddClockTime(line("."))<cr>
+nnoremap <silent> <buffer> <localleader>ce :call OrgClockEval(line("."))<cr>
 "cnoremap <space> <C-\>e(<SID>OrgDateEdit())<CR>
 " dl is for the date on the current line
 noremap <buffer> <localleader>x :call OrgExportDashboard()<cr>
